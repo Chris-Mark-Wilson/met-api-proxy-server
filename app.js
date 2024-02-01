@@ -9,7 +9,6 @@ app.get('/proxy', async (req, res) => {
   try {
     const{url}=req.query
     const response = await axios.get(url);
-console.log(response.data)
     res.json(response.data);
   } catch (error) {
     console.log(error);
@@ -20,7 +19,7 @@ console.log(response.data)
 app.get('/png',async(req,res)=>{
   try{
     const{url}=req.query
-    console.log(url)
+   
     const response = await axios.get(url,{responseType:'arraybuffer'});
     res.set('Content-Type', 'image/png');
     res.send(response.data)
