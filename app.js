@@ -17,4 +17,17 @@ console.log(response.data)
   }
 });
 
+app.get('/png',async(req,res)=>{
+  try{
+    const{url}=req.query
+    const response = await axios.get(url,{responseType:'arraybuffer'});
+    res.set('Content-Type', 'image/png');
+    res.send(response.data)
+  }catch(error){
+    console.log(error);
+    res.status(500).json({ error: error.toString() });
+  }
+}
+)
+
 app.listen(3000, () => console.log('Proxy server running on port 3000'));
