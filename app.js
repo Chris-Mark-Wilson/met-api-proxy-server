@@ -7,8 +7,8 @@ app.use(cors());
 
 app.get('/proxy', async (req, res) => {
   try {
-    const{url}=req.query
-    const response = await axios.get(url);
+    const{meturl}=req.query
+    const response = await axios.get(meturl);
     res.json(response.data);
   } catch (error) {
     console.log(error);
@@ -18,9 +18,9 @@ app.get('/proxy', async (req, res) => {
 
 app.get('/png',async(req,res)=>{
   try{
-    const{url}=req.query
+    const{meturl}=req.query
    
-    const response = await axios.get(url,{responseType:'arraybuffer'});
+    const response = await axios.get(meturl,{responseType:'arraybuffer'});
     res.set('Content-Type', 'image/png');
     res.send(response.data)
   }catch(error){
